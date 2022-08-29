@@ -12,5 +12,4 @@ func main() {
 	question := "What is capital of Uzbekistan?"
 	fmt.Println(ansatonce.AnsAtOnceMain(question, answer))
 	fmt.Println(ansbyletter.AnswerByLetterMain(question, answer))
-
 }
