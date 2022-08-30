@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
-	ansatonce "game/ansAtOnce"
+	graphs "game/Graphs"
+	// ansatonce "game/ansAtOnce"
 	ansbyletter "game/ansbyletter"
+	"game/config"
 )
 
 func main() {
 	fmt.Println("Hello world")
-	answer := "tashkent"
-	question := "What is capital of Uzbekistan?"
-	fmt.Println(ansatonce.AnsAtOnceMain(question, answer))
+	question, answer := config.GetRandomQuestion()
+	// fmt.Println(ansatonce.AnsAtOnceMain(question, answer))
 	fmt.Println(ansbyletter.AnswerByLetterMain(question, answer))
+	graphs.ShowQuestion(question)
 }
