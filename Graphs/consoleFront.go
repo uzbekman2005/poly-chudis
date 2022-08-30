@@ -40,7 +40,7 @@ func ShowRes(res int) {
 	} else {
 
 		fmt.Println("****************************************************")
-		fmt.Println("#              AFSUSKI SIZ TOPA OLMADINGIZ         #")
+		fmt.Println("#              AFSUSKI SIZ TOPA OLMADINGIZ         #")	
 		fmt.Println("****************************************************")
 		fmt.Print("\n")
 		fmt.Println(" ---> 1. Bosing >> O`yin qaytadan o`ynash uchun     ")
