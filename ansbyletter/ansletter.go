@@ -31,6 +31,7 @@ func isRightAnswer(letter string, rightAnswer []string, outPutAnswer []string) {
 	for i := 0; i < len(rightAnswer); i++ {
 		if string(rightAnswer[i]) == letter && string(outPutAnswer[i]) == "-" {
 			outPutAnswer[i] = rightAnswer[i]
+			fmt.Println(rightAnswer)
 		}
 	}
 }
