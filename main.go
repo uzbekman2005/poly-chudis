@@ -1,17 +1,45 @@
 package main
 
 import (
-	"fmt"
 	graphs "game/Graphs"
-	// ansatonce "game/ansAtOnce"
+	ansatonce "game/ansAtOnce"
 	ansbyletter "game/ansbyletter"
 	"game/config"
 )
 
 func main() {
-	fmt.Println("Hello world")
-	question, answer := config.GetRandomQuestion()
-	// fmt.Println(ansatonce.AnsAtOnceMain(question, answer))
-	fmt.Println(ansbyletter.AnswerByLetterMain(question, answer))
-	graphs.ShowQuestion(question)
+	var choice, res, doStop int
+	for {
+		graphs.MainMenu()
+		choice = graphs.InputNum("> ")
+		if choice == 1 {
+			graphs.SystemClear()
+			graphs.ShowOptions()
+		} else if choice == 2 {
+			graphs.SystemClear()
+			question, answer := config.GetRandomQuestion()
+			graphs.ShowQuestion(question)
+			graphs.ShowOptions()
+			choice = graphs.InputNum(">")
+			graphs.SystemClear()
+			switch choice {
+			case 1:
+				res = ansbyletter.AnswerByLetterMain(question, answer)
+			case 2:
+				res = ansatonce.AnsAtOnceMain(question, answer)
+			default:
+				continue
+			}
+			doStop = graphs.ShowRes(res)
+			if doStop == 1 {
+				continue
+			} else {
+				break
+			}
+
+		} else {
+			break
+		}
+
+	}
 }

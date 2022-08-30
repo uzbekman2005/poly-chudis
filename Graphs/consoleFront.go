@@ -2,6 +2,8 @@ package graphs
 
 import (
 	"fmt"
+	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 )
@@ -12,8 +14,8 @@ func MainMenu() {
 	fmt.Println("+-      Polychudes o'yiniga xo'sh kelibsiz!       -+")
 	fmt.Println("+--------------------------------------------------+")
 	fmt.Print("\n")
-	fmt.Println(" ---> 1 - Bosing > Shartlar bilan tanishish uchun<  ")
-	fmt.Println(" ---> 2 - Bosing 	   > O`yini boshlash uchun<      ")
+	fmt.Println(" ---> 1 - Bosing > Shartlar bilan tanishish uchun   ")
+	fmt.Println(" ---> 2 - Bosing > O`yini boshlash uchun            ")
 	// 1 Start
 	// 2 End
 }
@@ -27,32 +29,33 @@ func ShowOptions() {
 	fmt.Println("+--------------------------------------------------+")
 }
 
-func ShowRes(res int) {
+func ShowRes(res int) int {
 	// if 1 win else if 0 lose
 	if res == 1 {
-		fmt.Println("+--------------------------------------------------+")
-		fmt.Println("+-				TABRIKLAYMIZ!!!!!!				   -+")
-		fmt.Println("+-      		  SIZ YUTDINGIZ                    -+")
-		fmt.Println("+--------------------------------------------------+")
+		fmt.Println("+---------------------------------------------+")
+		fmt.Println("+    Tabriklaymiz siz g'alaba qozondingiz    -+")
+		fmt.Println("+---------------------------------------------+")
 		fmt.Print("\n")
-		fmt.Println(" ---> 1. Bosing >> O`yin qaytadan o`ynash uchun     ")
-		fmt.Println(" ---> 2. Bosing >> O`yindan chiqish uchun           ")
+		fmt.Println(" 1. Bosing >> O`yin qaytadan o`ynash uchun     ")
+		fmt.Println(" 2. Bosing >> O`yindan chiqish uchun           ")
 	} else {
 
-		fmt.Println("****************************************************")
-		fmt.Println("#              AFSUSKI SIZ TOPA OLMADINGIZ         #")	
-		fmt.Println("****************************************************")
+		fmt.Println("************************************************")
+		fmt.Println("#            AFSUSKI SIZ TOPA OLMADINGIZ       #")
+		fmt.Println("************************************************")
 		fmt.Print("\n")
-		fmt.Println(" ---> 1. Bosing >> O`yin qaytadan o`ynash uchun     ")
-		fmt.Println(" ---> 2. Bosing >> O`yindan chiqish uchun           ")
+		fmt.Println(" 1. Bosing >> O`yin qaytadan o`ynash uchun      ")
+		fmt.Println(" 2. Bosing >> O`yindan chiqish uchun            ")
 	}
+	return InputNum(">")
 }
+
 
 func InputNum(hint string) int {
 	var temp string
 
 	for {
-		fmt.Print(hint, ": ")
+		fmt.Print(hint)
 		fmt.Scan(&temp)
 		res, err := strconv.Atoi(temp)
 		if err == nil {
@@ -84,6 +87,12 @@ func ShowQuestion(question string) {
 		fmt.Printf("+- %-46s -+\n", strings.Join(temp, " "))
 	}
 	fmt.Println("+--------------------------------------------------+")
+}
+
+func SystemClear() {
+	c := exec.Command("clear")
+	c.Stdout = os.Stdout
+	c.Run()
 }
 
 func InputString(hint string) string {
